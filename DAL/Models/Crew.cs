@@ -1,4 +1,4 @@
-﻿namespace DAL.Models
+﻿namespace AirportRESRfulApi.DAL.Models
 {
     using System.Collections.Generic;
     public class Crew : Entity

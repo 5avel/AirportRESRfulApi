@@ -1,4 +1,4 @@
-﻿namespace DAL.Models
+﻿namespace AirportRESRfulApi.DAL.Models
 {
     using System;
     public class Departure : Entity

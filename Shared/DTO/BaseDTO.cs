@@ -1,4 +1,4 @@
-﻿namespace Shared.DTO
+﻿namespace AirportRESRfulApi.Shared.DTO
 {
     public class BaseDTO
     {

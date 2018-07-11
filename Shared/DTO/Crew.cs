@@ -1,4 +1,4 @@
-﻿namespace Shared.DTO
+﻿namespace AirportRESRfulApi.Shared.DTO
 {
     using System.Collections.Generic;
     public class Crew : BaseDTO

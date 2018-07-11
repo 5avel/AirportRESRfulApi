@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Shared.DTO
+namespace AirportRESRfulApi.Shared.DTO
 {
     public class Departure : BaseDTO
     {

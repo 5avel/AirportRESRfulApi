@@ -1,4 +1,4 @@
-﻿namespace Shared.DTO
+﻿namespace AirportRESRfulApi.Shared.DTO
 {
     using System;
     public class Stewardesses : BaseDTO

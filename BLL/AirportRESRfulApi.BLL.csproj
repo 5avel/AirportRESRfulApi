@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>AirportRESRfulApi.BLL</AssemblyName>
+    <RootNamespace>AirportRESRfulApi.BLL</RootNamespace>
   </PropertyGroup>
 
 </Project>
