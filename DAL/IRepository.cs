@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirportRESRfulApi.DAL
 {
-    interface IRepository<TEntity> where TEntity : Entity
+    public interface IRepository<TEntity> where TEntity : Entity
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetById(int id);

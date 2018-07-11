@@ -1,7 +1,7 @@
 ﻿namespace AirportRESRfulApi.Shared.DTO
 {
     using System;
-    public class PlaneType : BaseDTO
+    public class PlaneTypeDTO : BaseDTO
     {
         public string Model { set; get; }
         public int Seats { set; get; }

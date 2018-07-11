@@ -6,4 +6,13 @@
     <RootNamespace>AirportRESRfulApi.BLL</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\AirportRESRfulApi.DAL.csproj" />
+    <ProjectReference Include="..\Shared\AirportRESRfulApi.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

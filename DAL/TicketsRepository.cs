@@ -50,10 +50,17 @@ namespace AirportRESRfulApi.DAL
 
         public Ticket Update(Ticket entity)
         {
+            if (entity == null) return null;
+
             var updatedEntity = _airportContext.Tickets?.FirstOrDefault(t => t.Id == entity.Id);
             if (updatedEntity == null) return null;
-            updatedEntity = entity;
-            return updatedEntity;
+
+            if(_airportContext.Tickets.Remove(updatedEntity))
+            {
+                _airportContext.Tickets.Add(entity);
+                return entity;
+            }
+            return null;
         }
     }
 }

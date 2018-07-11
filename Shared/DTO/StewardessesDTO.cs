@@ -1,7 +1,7 @@
 ﻿namespace AirportRESRfulApi.Shared.DTO
 {
     using System;
-    public class Stewardesses : BaseDTO
+    public class StewardessesDTO : BaseDTO
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

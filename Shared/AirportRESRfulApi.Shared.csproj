@@ -5,8 +5,4 @@
     <RootNamespace>AirportRESRfulApi.Shared</RootNamespace>
     <AssemblyName>AirportRESRfulApi.Shared</AssemblyName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
 </Project>

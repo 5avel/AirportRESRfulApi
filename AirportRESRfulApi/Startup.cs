@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AirportRESRfulApi.BLL.Services;
+using AirportRESRfulApi.DAL;
+using AirportRESRfulApi.DAL.Models;
+using AirportRESRfulApi.Shared.DTO;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +30,18 @@ namespace AirportRESRfulApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // DAL 
+            services.AddScoped<IRepository<Ticket>, TicketsRepository>();
+
+            // DAL Context
+            services.AddSingleton<IAirportContext, AirportContext>();
+
+            //BLL
+            services.AddScoped<ITicketService, TicketService>();
+
+            //Maper
+            services.AddScoped(_ => MapperConfiguration().CreateMapper());
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -37,6 +54,24 @@ namespace AirportRESRfulApi
             }
 
             app.UseMvc();
+        }
+
+        public MapperConfiguration MapperConfiguration()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Ticket, TicketDTO>();
+                cfg.CreateMap<TicketDTO, Ticket>();
+
+                //cfg.CreateMap<Item, Services.DTOs.Item>()
+                //    .ForMember(i => i.Labels, opt => opt.MapFrom(i => i.IteamLabels.Select(il => il.Label)));
+                //cfg.CreateMap<Services.DTOs.Item, Item>()
+                //    .ForMember(i => i.IteamLabels, opt => opt.Ignore())
+                //    .ForMember(i => i.List, opt => opt.Ignore())
+                //    .ForMember(i => i.ListId, opt => opt.Ignore());
+            });
+
+            return config;
         }
     }
 }
