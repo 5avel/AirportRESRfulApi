@@ -1,5 +1,4 @@
-﻿using System;
-namespace Shared.DTO
+﻿namespace Shared.DTO
 {
     public class BaseDTO
     {

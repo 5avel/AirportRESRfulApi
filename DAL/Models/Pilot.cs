@@ -1,7 +1,7 @@
-﻿namespace Shared.DTO
+﻿namespace DAL.Models
 {
     using System;
-    public class Pilot : BaseDTO
+    public class Pilot : Entity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,7 +1,7 @@
-﻿namespace Shared.DTO
+﻿namespace DAL.Models
 {
     using System.Collections.Generic;
-    public class Crew : BaseDTO
+    public class Crew : Entity
     {
         public Pilot Pilot { set; get; }
         public List<Stewardesses> Stewardesses { set; get; }

@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Shared.DTO
+﻿namespace Shared.DTO
 {
+    using System;
     public class Stewardesses : BaseDTO
     {
         public string FirstName { get; set; }

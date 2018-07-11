@@ -1,7 +1,7 @@
-﻿namespace Shared.DTO
+﻿namespace DAL.Models
 {
     using System;
-    public class Flight : BaseDTO
+    public class Flight : Entity
     {
         public string FlightNumber { set; get; } 
         public string DeparturePoint { set; get; }

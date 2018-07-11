@@ -1,7 +1,7 @@
-﻿namespace Shared.DTO
+﻿namespace DAL.Models
 {
     using System;
-    public class PlaneType : BaseDTO
+    public class PlaneType : Entity
     {
         public string Model { set; get; }
         public int Seats { set; get; }
