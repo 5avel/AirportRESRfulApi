@@ -16,7 +16,8 @@ namespace AirportRESRfulApi.DAL
                     Id = 1,
                     FlightNumber = "QW11",
                     PlaseNumber = 1,
-                    Price = 55
+                    Price = 55,
+                    IsSold = false
 
                 },
                 new Ticket
@@ -24,8 +25,8 @@ namespace AirportRESRfulApi.DAL
                     Id = 2,
                     FlightNumber = "QW11",
                     PlaseNumber = 2,
-                    Price = 55
-
+                    Price = 55,
+                    IsSold = true
                 }
             };
         }

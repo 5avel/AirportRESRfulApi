@@ -22,6 +22,7 @@ namespace AirportRESRfulApi.BLL.Services
         public TicketDTO GetTicketById(int id)
         {
             var ticket = _ticketRepository.GetById(id);
+            
             return _mapper.Map<Ticket, TicketDTO>(ticket);
         }
 

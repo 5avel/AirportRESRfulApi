@@ -27,6 +27,10 @@ namespace AirportRESRfulApi.Controllers
         [HttpGet("{id}")]
         public ActionResult<TicketDTO> Get(int id)
         {
+            var ticket = _ticketSrvice.GetTicketById(id);
+
+            if (ticket == null) return NotFound();
+
             return _ticketSrvice.GetTicketById(id);
         }
 
