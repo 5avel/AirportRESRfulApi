@@ -10,44 +10,47 @@ namespace AirportRESRfulApi.BLL.Services
 {
     public class TicketService : ITicketService
     {
-        private IRepository<Ticket> _ticketRepository;
+        private IRepository<Ticket> _repository;
         private IMapper _mapper;
-        public TicketService(IRepository<Ticket> ticketRepository, IMapper mapper)
+        public TicketService(IRepository<Ticket> repository, IMapper mapper)
         {
-            _ticketRepository = ticketRepository;
+            _repository = repository;
             _mapper = mapper;
         }
 
-
-        public TicketDto GetTicketById(int id)
+        public bool Delete(int id)
         {
-            var ticket = _ticketRepository.GetById(id);
-            
-            return _mapper.Map<Ticket, TicketDto>(ticket);
+            return _repository.Delete(id);
         }
 
-        public IEnumerable<TicketDto> GetTickets()
+        public IEnumerable<TicketDto> Get()
         {
-            var tickets = _ticketRepository.GetAll();
-            return _mapper.Map<IEnumerable<Ticket>, IEnumerable<TicketDto>>(tickets);
+            var entity = _repository.GetAll();
+            return _mapper.Map<IEnumerable<Ticket>, IEnumerable<TicketDto>>(entity);
         }
 
-        public TicketDto MakeTicket(TicketDto ticket)
+
+        public TicketDto GetById(int id)
         {
-            var makedTicket = _mapper.Map<TicketDto, Ticket>(ticket);
-            return _mapper.Map<Ticket, TicketDto>(_ticketRepository.Create(makedTicket));
+            var entity = _repository.GetById(id);
+            return _mapper.Map<Ticket, TicketDto>(entity);
         }
 
-        public TicketDto UpdateTicket(TicketDto ticket)
+        
+
+        public TicketDto Make(TicketDto entity)
         {
-            var updatedTicket = _mapper.Map<TicketDto, Ticket>(ticket);
-            return _mapper.Map<Ticket, TicketDto>(_ticketRepository.Update(updatedTicket));
+            var makedEntity = _mapper.Map<TicketDto, Ticket>(entity);
+            return _mapper.Map<Ticket, TicketDto>(_repository.Create(makedEntity));
         }
 
-        public bool DeleteTicket(int id)
+        public TicketDto Update(TicketDto entity)
         {
-            return _ticketRepository.Delete(id);
+            var updatedEntity = _mapper.Map<TicketDto, Ticket>(entity);
+            return _mapper.Map<Ticket, TicketDto>(_repository.Update(updatedEntity));
         }
+
+
 
     }
 }

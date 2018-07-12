@@ -22,9 +22,9 @@ namespace AirportRESRfulApi.DAL
 
         public bool Delete(int id)
         {
-            var ticketToRemove = _airportContext.Tickets.FirstOrDefault(t => t.Id == id);
-            if (ticketToRemove == null) return false;
-            return _airportContext.Tickets.Remove(ticketToRemove);
+            var itemToRemove = _airportContext.Tickets.FirstOrDefault(t => t.Id == id);
+            if (itemToRemove == null) return false;
+            return _airportContext.Tickets.Remove(itemToRemove);
         }
 
         public bool Delete(Ticket entity)

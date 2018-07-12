@@ -32,12 +32,14 @@ namespace AirportRESRfulApi
         {
             // DAL 
             services.AddScoped<IRepository<Ticket>, TicketsRepository>();
+            services.AddScoped<IRepository<Flight>, FlightsRepository>();
 
             // DAL Context
             services.AddSingleton<IAirportContext, AirportContext>();
 
             //BLL
             services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<IFlightsService, FlightsService>();
 
             //Maper
             services.AddScoped(_ => MapperConfiguration().CreateMapper());
@@ -62,6 +64,9 @@ namespace AirportRESRfulApi
             {
                 cfg.CreateMap<Ticket, TicketDto>();
                 cfg.CreateMap<TicketDto, Ticket>();
+
+                cfg.CreateMap<Flight, FlightDto>();
+                cfg.CreateMap<FlightDto, Flight>();
 
                 //cfg.CreateMap<Item, Services.DTOs.Item>()
                 //    .ForMember(i => i.Labels, opt => opt.MapFrom(i => i.IteamLabels.Select(il => il.Label)));

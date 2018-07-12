@@ -7,6 +7,7 @@ namespace AirportRESRfulApi.DAL
 {
     public interface IAirportContext
     {
+        List<Flight> Flights { get; }
         List<Ticket> Tickets { get; }
     }
 }

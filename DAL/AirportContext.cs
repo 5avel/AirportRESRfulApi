@@ -29,8 +29,34 @@ namespace AirportRESRfulApi.DAL
                     IsSold = true
                 }
             };
+
+            Flights = new List<Flight>
+            {
+                new Flight
+                {
+                    Id = 1,
+                    DepartureNumber = "QW11",
+                    DeparturePoint = "London",
+                    DepartureTime = DateTime.Now,
+                    DestinationPoint = "Ukraine",
+                    ArrivalTime = DateTime.Now + TimeSpan.FromHours(5),
+                    Tickets = null
+
+                },
+                new Flight
+                {
+                    Id = 2,
+                    DepartureNumber = "QW13",
+                    DeparturePoint = "Ukraine",
+                    DepartureTime = DateTime.Now,
+                    DestinationPoint = "London",
+                    ArrivalTime = DateTime.Now + TimeSpan.FromHours(5),
+                    Tickets = Tickets
+                }
+            };
         }
 
+        public List<Flight> Flights { private set; get; }
         public List<Ticket> Tickets { private set; get; }
     }
 }
