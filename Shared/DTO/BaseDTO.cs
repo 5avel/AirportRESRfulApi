@@ -1,6 +1,6 @@
 ﻿namespace AirportRESRfulApi.Shared.DTO
 {
-    public class BaseDTO
+    public class BaseDto
     {
         public int Id { set; get; }
     }

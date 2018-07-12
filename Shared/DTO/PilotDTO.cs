@@ -1,8 +1,9 @@
 ﻿namespace AirportRESRfulApi.Shared.DTO
 {
     using System;
-    public class Pilot : BaseDTO
+    public class PilotDto : BaseDto
     {
+        public int CrewId { set; get; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime Birthday { get; set; }

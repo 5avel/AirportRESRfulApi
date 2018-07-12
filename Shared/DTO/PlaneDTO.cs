@@ -1,10 +1,11 @@
 ﻿namespace AirportRESRfulApi.Shared.DTO
 {
     using System;
-    public class PlaneDTO : BaseDTO
+    public class PlaneDto : BaseDto
     {
+        public int DepartureId { get; set; }
         public string Name { set; get; }
-        public PlaneTypeDTO Type { set; get; }
+        public int PlaneTypeID { set; get; }
         public DateTime ReleaseDate { set; get; }
     }
 }
