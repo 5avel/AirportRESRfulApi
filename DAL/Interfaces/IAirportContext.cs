@@ -13,5 +13,8 @@ namespace AirportRESRfulApi.DAL.Interfaces
         List<Crew> Crews { get; }
         List<Pilot> Pilots {  get; }
         List<Stewardess> Stewardesses { get; }
+        List<PlaneType> PlaneTyps { get; }
+        List<Plane> Plans { get; }
+
     }
 }

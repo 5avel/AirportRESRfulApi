@@ -162,6 +162,8 @@ namespace AirportRESRfulApi.DAL
         public List<Crew>  Crews { private set; get; }
         public List<Pilot> Pilots { private set; get; }
         public List<Stewardess> Stewardesses { private set; get; }
+        public List<PlaneType> PlaneTyps { private set; get; }
+        public List<Plane> Plans { private set; get; }
 
 
 

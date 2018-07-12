@@ -33,6 +33,8 @@ namespace AirportRESRfulApi
             services.AddScoped<IRepository<Crew>, CrewsRepository>();
             services.AddScoped<IRepository<Pilot>, PilotsRepository>();
             services.AddScoped<IRepository<Stewardess>, StewardessesRepository>();
+            services.AddScoped<IRepository<Plane>, PlansRepository>();
+            services.AddScoped<IRepository<PlaneType>, PlaneTypsRepository>();
 
             // DAL Context
             services.AddSingleton<IAirportContext, AirportContext>();
@@ -44,6 +46,8 @@ namespace AirportRESRfulApi
             services.AddScoped<ICrewsService, CrewsService>();
             services.AddScoped<IPilotsService, PilotsService>();
             services.AddScoped<IStewardessesService, StewardessesService>();
+            services.AddScoped<IPlanesService, PlanesService>();
+            services.AddScoped<IPlaneTypesService, PlaneTypesService>();
 
             //Maper
             services.AddScoped(_ => MapperConfiguration().CreateMapper());
@@ -84,12 +88,11 @@ namespace AirportRESRfulApi
                 cfg.CreateMap<Stewardess, StewardessDto>();
                 cfg.CreateMap<StewardessDto, Stewardess>();
 
-                //cfg.CreateMap<Item, Services.DTOs.Item>()
-                //    .ForMember(i => i.Labels, opt => opt.MapFrom(i => i.IteamLabels.Select(il => il.Label)));
-                //cfg.CreateMap<Services.DTOs.Item, Item>()
-                //    .ForMember(i => i.IteamLabels, opt => opt.Ignore())
-                //    .ForMember(i => i.List, opt => opt.Ignore())
-                //    .ForMember(i => i.ListId, opt => opt.Ignore());
+                cfg.CreateMap<Plane, PlaneDto>();
+                cfg.CreateMap<PlaneDto, Plane>();
+
+                cfg.CreateMap<PlaneType, PlaneTypeDto>();
+                cfg.CreateMap<PlaneTypeDto, PlaneType>();
             });
 
             return config;
