@@ -8,51 +8,51 @@ namespace AirportRESRfulApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TicketsController : ControllerBase
+    public class PilotsController : ControllerBase
     {
-        private ITicketsService _ticketSrvice;
-        public TicketsController(ITicketsService ticketSrvice)
+        private IPilotsService _pilotsSrvice;
+        public PilotsController(IPilotsService pilotsSrvice)
         {
-            _ticketSrvice = ticketSrvice;
+            _pilotsSrvice = pilotsSrvice;
         }
 
         // GET api/Tickets
         [HttpGet]
-        public ActionResult<IEnumerable<TicketDto>> Get()
+        public ActionResult<IEnumerable<PilotDto>> Get()
         {
-            return _ticketSrvice.Get().ToList();
+            return _pilotsSrvice.Get().ToList();
         }
 
         // GET api/Tickets/2
         [HttpGet("{id}")]
-        public ActionResult<TicketDto> Get(int id)
+        public ActionResult<PilotDto> Get(int id)
         {
-            var ticket = _ticketSrvice.GetById(id);
+            var ticket = _pilotsSrvice.GetById(id);
 
             if (ticket == null) return NotFound();
 
-            return _ticketSrvice.GetById(id);
+            return _pilotsSrvice.GetById(id);
         }
 
         // POST api/Tickets
         [HttpPost]
-        public ActionResult<TicketDto> Post([FromBody] TicketDto ticket)
+        public ActionResult<PilotDto> Post([FromBody] PilotDto entity)
         {
-            return _ticketSrvice.Make(ticket);
+            return _pilotsSrvice.Make(entity);
         }
 
         // PUT api/Tickets/2
         [HttpPut("{id}")]
-        public TicketDto Put(int id, [FromBody] TicketDto ticket)
+        public PilotDto Put(int id, [FromBody] PilotDto entity)
         {
-            return _ticketSrvice.Update(ticket);
+            return _pilotsSrvice.Update(entity);
         }
 
         // DELETE api/Tickets/2
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if(_ticketSrvice.Delete(id))
+            if(_pilotsSrvice.Delete(id))
             {
                 return Ok();
             }

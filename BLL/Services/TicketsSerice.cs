@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AirportRESRfulApi.DAL;
 using AirportRESRfulApi.DAL.Models;
-using AirportRESRfulApi.DAL;
 using AirportRESRfulApi.Shared.DTO;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace AirportRESRfulApi.BLL.Services
 {
-    public class TicketService : ITicketService
+    public class TicketsService : ITicketsService
     {
         private IRepository<Ticket> _repository;
         private IMapper _mapper;
-        public TicketService(IRepository<Ticket> repository, IMapper mapper)
+        public TicketsService(IRepository<Ticket> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

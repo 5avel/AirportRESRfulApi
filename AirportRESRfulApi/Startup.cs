@@ -33,13 +33,19 @@ namespace AirportRESRfulApi
             // DAL 
             services.AddScoped<IRepository<Ticket>, TicketsRepository>();
             services.AddScoped<IRepository<Flight>, FlightsRepository>();
+            services.AddScoped<IRepository<Departure>, DeparturesRepository>();
+            services.AddScoped<IRepository<Crew>, CrewsRepository>();
+            services.AddScoped<IRepository<Pilot>, PilotsRepository>();
 
             // DAL Context
             services.AddSingleton<IAirportContext, AirportContext>();
 
             //BLL
-            services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<ITicketsService, TicketsService>();
             services.AddScoped<IFlightsService, FlightsService>();
+            services.AddScoped<IDeparturesService, DeparturesSerice>();
+            services.AddScoped<ICrewsService, CrewsService>();
+            services.AddScoped<IPilotsService, PilotsService>();
 
             //Maper
             services.AddScoped(_ => MapperConfiguration().CreateMapper());
@@ -67,6 +73,15 @@ namespace AirportRESRfulApi
 
                 cfg.CreateMap<Flight, FlightDto>();
                 cfg.CreateMap<FlightDto, Flight>();
+
+                cfg.CreateMap<Departure, DepartureDto>();
+                cfg.CreateMap<DepartureDto, Departure>();
+
+                cfg.CreateMap<Crew, CrewDto>();
+                cfg.CreateMap<CrewDto, Crew>();
+
+                cfg.CreateMap<Pilot, PilotDto>();
+                cfg.CreateMap<PilotDto, Pilot>();
 
                 //cfg.CreateMap<Item, Services.DTOs.Item>()
                 //    .ForMember(i => i.Labels, opt => opt.MapFrom(i => i.IteamLabels.Select(il => il.Label)));

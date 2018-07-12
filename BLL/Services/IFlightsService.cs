@@ -1,7 +1,5 @@
 ﻿using AirportRESRfulApi.Shared.DTO;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AirportRESRfulApi.BLL.Services
 {
