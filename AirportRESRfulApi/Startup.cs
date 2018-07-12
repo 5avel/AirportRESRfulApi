@@ -60,8 +60,8 @@ namespace AirportRESRfulApi
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Ticket, TicketDTO>();
-                cfg.CreateMap<TicketDTO, Ticket>();
+                cfg.CreateMap<Ticket, TicketDto>();
+                cfg.CreateMap<TicketDto, Ticket>();
 
                 //cfg.CreateMap<Item, Services.DTOs.Item>()
                 //    .ForMember(i => i.Labels, opt => opt.MapFrom(i => i.IteamLabels.Select(il => il.Label)));

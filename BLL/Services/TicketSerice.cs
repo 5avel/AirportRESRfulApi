@@ -19,29 +19,29 @@ namespace AirportRESRfulApi.BLL.Services
         }
 
 
-        public TicketDTO GetTicketById(int id)
+        public TicketDto GetTicketById(int id)
         {
             var ticket = _ticketRepository.GetById(id);
             
-            return _mapper.Map<Ticket, TicketDTO>(ticket);
+            return _mapper.Map<Ticket, TicketDto>(ticket);
         }
 
-        public IEnumerable<TicketDTO> GetTickets()
+        public IEnumerable<TicketDto> GetTickets()
         {
             var tickets = _ticketRepository.GetAll();
-            return _mapper.Map<IEnumerable<Ticket>, IEnumerable<TicketDTO>>(tickets);
+            return _mapper.Map<IEnumerable<Ticket>, IEnumerable<TicketDto>>(tickets);
         }
 
-        public TicketDTO MakeTicket(TicketDTO ticket)
+        public TicketDto MakeTicket(TicketDto ticket)
         {
-            var makedTicket = _mapper.Map<TicketDTO, Ticket>(ticket);
-            return _mapper.Map<Ticket, TicketDTO>(_ticketRepository.Create(makedTicket));
+            var makedTicket = _mapper.Map<TicketDto, Ticket>(ticket);
+            return _mapper.Map<Ticket, TicketDto>(_ticketRepository.Create(makedTicket));
         }
 
-        public TicketDTO UpdateTicket(TicketDTO ticket)
+        public TicketDto UpdateTicket(TicketDto ticket)
         {
-            var updatedTicket = _mapper.Map<TicketDTO, Ticket>(ticket);
-            return _mapper.Map<Ticket, TicketDTO>(_ticketRepository.Update(updatedTicket));
+            var updatedTicket = _mapper.Map<TicketDto, Ticket>(ticket);
+            return _mapper.Map<Ticket, TicketDto>(_ticketRepository.Update(updatedTicket));
         }
 
         public bool DeleteTicket(int id)

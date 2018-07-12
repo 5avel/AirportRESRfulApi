@@ -18,14 +18,14 @@ namespace AirportRESRfulApi.Controllers
 
         // GET api/Tickets
         [HttpGet]
-        public ActionResult<IEnumerable<TicketDTO>> Get()
+        public ActionResult<IEnumerable<TicketDto>> Get()
         {
             return _ticketSrvice.GetTickets().ToList();
         }
 
         // GET api/Tickets/2
         [HttpGet("{id}")]
-        public ActionResult<TicketDTO> Get(int id)
+        public ActionResult<TicketDto> Get(int id)
         {
             var ticket = _ticketSrvice.GetTicketById(id);
 
@@ -36,14 +36,14 @@ namespace AirportRESRfulApi.Controllers
 
         // POST api/Tickets
         [HttpPost]
-        public ActionResult<TicketDTO> Post([FromBody] TicketDTO ticket)
+        public ActionResult<TicketDto> Post([FromBody] TicketDto ticket)
         {
             return _ticketSrvice.MakeTicket(ticket);
         }
 
         // PUT api/Tickets/2
         [HttpPut("{id}")]
-        public TicketDTO Put(int id, [FromBody] TicketDTO ticket)
+        public TicketDto Put(int id, [FromBody] TicketDto ticket)
         {
             return _ticketSrvice.UpdateTicket(ticket);
         }

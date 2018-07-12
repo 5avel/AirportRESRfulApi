@@ -7,10 +7,10 @@ namespace AirportRESRfulApi.BLL.Services
 {
     public interface ITicketService
     {
-        IEnumerable<TicketDTO> GetTickets();
-        TicketDTO GetTicketById(int id);
-        TicketDTO MakeTicket(TicketDTO ticket);
-        TicketDTO UpdateTicket(TicketDTO ticket);
+        IEnumerable<TicketDto> GetTickets();
+        TicketDto GetTicketById(int id);
+        TicketDto MakeTicket(TicketDto ticket);
+        TicketDto UpdateTicket(TicketDto ticket);
         bool DeleteTicket(int id);
     }
 }
