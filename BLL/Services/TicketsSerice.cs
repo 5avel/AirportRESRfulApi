@@ -1,4 +1,5 @@
 ﻿using AirportRESRfulApi.BLL.Interfaces;
+using AirportRESRfulApi.BLL.Validations;
 using AirportRESRfulApi.DAL.Interfaces;
 using AirportRESRfulApi.DAL.Models;
 using AirportRESRfulApi.Shared.DTO;
@@ -39,12 +40,16 @@ namespace AirportRESRfulApi.BLL.Services
 
         public TicketDto Make(TicketDto entity)
         {
+            if (new TicketValidator().Validate(entity).IsValid != true) return null;
+
             var makedEntity = _mapper.Map<TicketDto, Ticket>(entity);
             return _mapper.Map<Ticket, TicketDto>(_repository.Create(makedEntity));
         }
 
         public TicketDto Update(TicketDto entity)
         {
+            if (new TicketValidator().Validate(entity).IsValid != true) return null;
+
             var updatedEntity = _mapper.Map<TicketDto, Ticket>(entity);
             return _mapper.Map<Ticket, TicketDto>(_repository.Update(updatedEntity));
         }

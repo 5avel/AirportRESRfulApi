@@ -2,7 +2,7 @@
 using AirportRESRfulApi.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace AirportRESRfulApi.DAL
 {
@@ -10,91 +10,21 @@ namespace AirportRESRfulApi.DAL
     {
         public AirportContext()
         {
-            Tickets = new List<Ticket>
-            {
-                new Ticket
-                {
-                    Id = 1,
-                    FlightNumber = "QW11",
-                    PlaseNumber = 1,
-                    Price = 55,
-                    IsSold = false
+            CreateSeedsData();
+        }
 
-                },
-                new Ticket
-                {
-                    Id = 2,
-                    FlightNumber = "QW11",
-                    PlaseNumber = 2,
-                    Price = 55,
-                    IsSold = true
-                }
-            };
+        public List<Flight> Flights { private set; get; }
+        public List<Departure> Departures { private set; get; }
+        public List<Ticket> Tickets { private set; get; }
+        public List<Crew>  Crews { private set; get; }
+        public List<Pilot> Pilots { private set; get; }
+        public List<Stewardess> Stewardesses { private set; get; }
+        public List<PlaneType> PlaneTyps { private set; get; }
+        public List<Plane> Planes { private set; get; }
 
-            Flights = new List<Flight>
-            {
-                new Flight
-                {
-                    Id = 1,
-                    DepartureNumber = "QW11",
-                    DeparturePoint = "London",
-                    DepartureTime = DateTime.Now,
-                    DestinationPoint = "Ukraine",
-                    ArrivalTime = DateTime.Now + TimeSpan.FromHours(5),
-                    Tickets = null
-
-                },
-                new Flight
-                {
-                    Id = 2,
-                    DepartureNumber = "QW13",
-                    DeparturePoint = "Ukraine",
-                    DepartureTime = DateTime.Now,
-                    DestinationPoint = "London",
-                    ArrivalTime = DateTime.Now + TimeSpan.FromHours(5),
-                    Tickets = Tickets
-                }
-            };
-
-            Departures = new List<Departure>
-            {
-                new Departure
-                {
-                    Id = 1,
-                    Flightid = 1,
-                    FlightNumber = "QW11",
-                    DepartureTime = DateTime.Now,
-                    Plane = null,
-                    Crew = null
-
-                },
-                new Departure
-                {
-                    Id = 2,
-                    Flightid = 2,
-                    FlightNumber = "QW13",
-                    DepartureTime = DateTime.Now,
-                    Plane = null,
-                    Crew = null
-                }
-            };
-
-            Crews = new List<Crew>
-            {
-                new Crew
-                {
-                    Id = 1,
-                    Pilot = null,
-                    Stewardesses = new List<Stewardess>()
-                },
-                new Crew
-                {
-                    Id = 2,
-                    Pilot = null,
-                    Stewardesses = new List<Stewardess>()
-                }
-            };
-
+        private void CreateSeedsData()
+        {
+            Tickets = new List<Ticket>();
             Pilots = new List<Pilot>
             {
                 new Pilot
@@ -105,7 +35,7 @@ namespace AirportRESRfulApi.DAL
                     Birthday = new DateTime(1987, 1, 24, 0, 0, 0),
                     CrewId = 1,
                     Experience = 8
-                   
+
                 },
                 new Pilot
                 {
@@ -154,16 +84,145 @@ namespace AirportRESRfulApi.DAL
                     CrewId = 2,
                 }
             };
+
+            Crews = new List<Crew>
+            {
+                new Crew
+                {
+                    Id = 1,
+                    Pilot = Pilots.FirstOrDefault(x => x.Id == 1),
+                    Stewardesses = Stewardesses.Where(x => x.Id <= 2).ToList(),
+                    DepartureId = 1
+                },
+                new Crew
+                {
+                    Id = 2,
+                    Pilot = Pilots.FirstOrDefault(x => x.Id == 2),
+                    Stewardesses = Stewardesses.Where(x => x.Id == 3 & x.Id == 4).ToList(),
+                    DepartureId = 2
+
+                }
+            };
+
+            PlaneTyps = new List<PlaneType>
+            {
+                new PlaneType
+                {
+                    Id = 1,
+                    Model = "Ту-134",
+                    Seats = 80,
+                    Capacity = 47000,
+                    Range = 2800,
+                    ServiceLife = new TimeSpan(200, 0, 0, 0)
+                },
+                new PlaneType
+                {
+                    Id = 2,
+                    Model = "A310",
+                    Seats = 183,
+                    Capacity = 164000,
+                    Range = 5500,
+                    ServiceLife = new TimeSpan(300, 0, 0, 0)
+                }
+            };
+
+            Planes = new List<Plane>
+            {
+                new Plane
+                {
+                    Id = 1,
+                    DepartureId = 1,
+                    Name = "T13",
+                    PlaneTypeID = 1,
+                    PlaneType = PlaneTyps.FirstOrDefault(x => x.Id == 1)
+                },
+                new Plane
+                {
+                    Id = 2,
+                    DepartureId = 2,
+                    Name = "A4",
+                    PlaneTypeID = 2,
+                    PlaneType = PlaneTyps.FirstOrDefault(x => x.Id == 2)
+                }
+            };
+
+            Departures = new List<Departure>
+            {
+                new Departure
+                {
+                    Id = 1,
+                    Flightid = 1,
+                    FlightNumber = "QW11",
+                    DepartureTime = DateTime.Now,
+                    Plane = Planes.FirstOrDefault(x => x.Id == 1),
+                    Crew = Crews.FirstOrDefault(x => x.Id == 1)
+
+                },
+                new Departure
+                {
+                    Id = 2,
+                    Flightid = 2,
+                    FlightNumber = "QW13",
+                    DepartureTime = DateTime.Now,
+                     Plane = Planes.FirstOrDefault(x => x.Id == 2),
+                    Crew = Crews.FirstOrDefault(x => x.Id == 2)
+                }
+            };
+
+            Flights = new List<Flight>
+            {
+                new Flight
+                {
+                    Id = 1,
+                    DepartureNumber = "QW11",
+                    DeparturePoint = "London",
+                    DepartureTime = DateTime.Now,
+                    DestinationPoint = "Ukraine",
+                    ArrivalTime = DateTime.Now + TimeSpan.FromHours(5),
+                    Tickets = CreateTickets(80, 1, "QW11"),
+                    Departure = Departures.FirstOrDefault(x => x.Id == 1)
+
+                },
+                new Flight
+                {
+                    Id = 2,
+                    DepartureNumber = "QW13",
+                    DeparturePoint = "Ukraine",
+                    DepartureTime = DateTime.Now,
+                    DestinationPoint = "London",
+                    ArrivalTime = DateTime.Now + TimeSpan.FromHours(5),
+                    Tickets = CreateTickets(183, 2, "QW13"),
+                    Departure = Departures.FirstOrDefault(x => x.Id == 2)
+
+                }
+            };
         }
 
-        public List<Flight> Flights { private set; get; }
-        public List<Departure> Departures { private set; get; }
-        public List<Ticket> Tickets { private set; get; }
-        public List<Crew>  Crews { private set; get; }
-        public List<Pilot> Pilots { private set; get; }
-        public List<Stewardess> Stewardesses { private set; get; }
-        public List<PlaneType> PlaneTyps { private set; get; }
-        public List<Plane> Plans { private set; get; }
+        private List<Ticket> CreateTickets(int planeSids, int flightId, string flightNumber)
+        {
+            List<Ticket> tickets = new List<Ticket>();
+            int startID = 0;
+            if (Tickets.Count > 0)
+            {
+                startID = Tickets.Last().Id;
+            }
+            for(int i = 1; i <= planeSids; i++)
+            {
+                tickets.Add(
+                    new Ticket
+                    {
+                        Id = ++startID,
+                        FlightId = flightId,
+                        FlightNumber = flightNumber,
+                        IsSold = false,
+                        PlaseNumber = 1,
+                        Price = 200
+                    });
+            }
+
+            Tickets.AddRange(tickets);
+            return tickets;
+        }
 
 
 

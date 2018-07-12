@@ -2,6 +2,7 @@
 {
     public class TicketDto : BaseDto
     {
+       
         public int FlightId { set; get; }
         public string FlightNumber { set; get; }
         public decimal Price { set; get; }

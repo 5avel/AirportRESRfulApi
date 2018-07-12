@@ -16,15 +16,15 @@ namespace AirportRESRfulApi.DAL
 
         public Plane Create(Plane entity)
         {
-            _airportContext.Plans.Add(entity);
+            _airportContext.Planes.Add(entity);
             return entity;
         }
 
         public bool Delete(int id)
         {
-            var itemToRemove = _airportContext.Plans.FirstOrDefault(t => t.Id == id);
+            var itemToRemove = _airportContext.Planes.FirstOrDefault(t => t.Id == id);
             if (itemToRemove == null) return false;
-            return _airportContext.Plans.Remove(itemToRemove);
+            return _airportContext.Planes.Remove(itemToRemove);
         }
 
         public bool Delete(Plane entity)
@@ -35,29 +35,29 @@ namespace AirportRESRfulApi.DAL
 
         public IEnumerable<Plane> Find(Func<Plane, bool> predicate)
         {
-            return _airportContext.Plans?.Where(predicate);
+            return _airportContext.Planes?.Where(predicate);
         }
 
         public IEnumerable<Plane> GetAll()
         {
-            return _airportContext.Plans;
+            return _airportContext.Planes;
         }
 
         public Plane GetById(int id)
         {
-            return _airportContext.Plans?.FirstOrDefault(t => t.Id == id);
+            return _airportContext.Planes?.FirstOrDefault(t => t.Id == id);
         }
 
         public Plane Update(Plane entity)
         {
             if (entity == null) return null;
 
-            var updatedEntity = _airportContext.Plans?.FirstOrDefault(t => t.Id == entity.Id);
+            var updatedEntity = _airportContext.Planes?.FirstOrDefault(t => t.Id == entity.Id);
             if (updatedEntity == null) return null;
 
-            if (_airportContext.Plans.Remove(updatedEntity))
+            if (_airportContext.Planes.Remove(updatedEntity))
             {
-                _airportContext.Plans.Add(entity);
+                _airportContext.Planes.Add(entity);
                 return entity;
             }
             return null;
