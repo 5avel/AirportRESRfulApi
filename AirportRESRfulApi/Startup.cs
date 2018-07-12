@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AirportRESRfulApi.BLL.Interfaces;
 using AirportRESRfulApi.BLL.Services;
 using AirportRESRfulApi.DAL;
+using AirportRESRfulApi.DAL.Interfaces;
 using AirportRESRfulApi.DAL.Models;
 using AirportRESRfulApi.Shared.DTO;
 using AutoMapper;
@@ -12,8 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace AirportRESRfulApi
 {
@@ -36,6 +32,7 @@ namespace AirportRESRfulApi
             services.AddScoped<IRepository<Departure>, DeparturesRepository>();
             services.AddScoped<IRepository<Crew>, CrewsRepository>();
             services.AddScoped<IRepository<Pilot>, PilotsRepository>();
+            services.AddScoped<IRepository<Stewardess>, StewardessesRepository>();
 
             // DAL Context
             services.AddSingleton<IAirportContext, AirportContext>();
@@ -46,6 +43,7 @@ namespace AirportRESRfulApi
             services.AddScoped<IDeparturesService, DeparturesSerice>();
             services.AddScoped<ICrewsService, CrewsService>();
             services.AddScoped<IPilotsService, PilotsService>();
+            services.AddScoped<IStewardessesService, StewardessesService>();
 
             //Maper
             services.AddScoped(_ => MapperConfiguration().CreateMapper());
@@ -82,6 +80,9 @@ namespace AirportRESRfulApi
 
                 cfg.CreateMap<Pilot, PilotDto>();
                 cfg.CreateMap<PilotDto, Pilot>();
+
+                cfg.CreateMap<Stewardess, StewardessDto>();
+                cfg.CreateMap<StewardessDto, Stewardess>();
 
                 //cfg.CreateMap<Item, Services.DTOs.Item>()
                 //    .ForMember(i => i.Labels, opt => opt.MapFrom(i => i.IteamLabels.Select(il => il.Label)));

@@ -1,7 +1,7 @@
 ﻿using AirportRESRfulApi.Shared.DTO;
 using System.Collections.Generic;
 
-namespace AirportRESRfulApi.BLL.Services
+namespace AirportRESRfulApi.BLL.Interfaces
 {
     public interface IPilotsService
     {

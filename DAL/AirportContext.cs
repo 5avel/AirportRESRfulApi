@@ -1,4 +1,5 @@
-﻿using AirportRESRfulApi.DAL.Models;
+﻿using AirportRESRfulApi.DAL.Interfaces;
+using AirportRESRfulApi.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -116,6 +117,43 @@ namespace AirportRESRfulApi.DAL
                     Experience = 3
                 }
             };
+
+            Stewardesses = new List<Stewardess>
+            {
+                new Stewardess
+                {
+                    Id = 1,
+                    FirstName = "Janna",
+                    LastName = "Ivanova",
+                    Birthday = new DateTime(1997, 1, 24, 0, 0, 0),
+                    CrewId = 1,
+
+                },
+                new Stewardess
+                {
+                    Id = 2,
+                    FirstName = "Petra",
+                    LastName = "Petrova",
+                    Birthday = new DateTime(1977, 1, 24, 0, 0, 0),
+                    CrewId = 2,
+                },
+                new Stewardess
+                {
+                    Id = 3,
+                    FirstName = "Anna",
+                    LastName = "Petrova",
+                    Birthday = new DateTime(1997, 1, 24, 0, 0, 0),
+                    CrewId = 2,
+                },
+                new Stewardess
+                {
+                    Id = 4,
+                    FirstName = "Irina",
+                    LastName = "Petrova",
+                    Birthday = new DateTime(1997, 1, 24, 0, 0, 0),
+                    CrewId = 2,
+                }
+            };
         }
 
         public List<Flight> Flights { private set; get; }
@@ -123,6 +161,8 @@ namespace AirportRESRfulApi.DAL
         public List<Ticket> Tickets { private set; get; }
         public List<Crew>  Crews { private set; get; }
         public List<Pilot> Pilots { private set; get; }
+        public List<Stewardess> Stewardesses { private set; get; }
+
 
 
     }

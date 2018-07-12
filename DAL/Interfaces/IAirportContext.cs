@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AirportRESRfulApi.DAL
+namespace AirportRESRfulApi.DAL.Interfaces
 {
     public interface IAirportContext
     {
@@ -12,5 +12,6 @@ namespace AirportRESRfulApi.DAL
         List<Ticket> Tickets { get; }
         List<Crew> Crews { get; }
         List<Pilot> Pilots {  get; }
+        List<Stewardess> Stewardesses { get; }
     }
 }
