@@ -43,20 +43,35 @@ GET   | /api/Stewardesses/{id}   | Одна по id                             
 POST  | /api/Stewardesses   | Додати стюардессу                                                     | /api/Stewardesses
 PUT   | /api/Stewardesses/{id}   | Оновити стюардессу                                               | /api/Stewardesses/2
 DELETE| /api/Stewardesses/{id}    | Видалити стюардессу                                             | /api/Stewardesses/2
-GET   | /api/Pilots | Список всіх стюардес                                                        | /api/Pilots
+GET   | /api/Pilots           | Список всіх                                                         | /api/Pilots
 GET   | /api/Pilots/{id}     | Однин по id                                                        | /api/Pilots/2
 POST  | /api/Pilots          | Додати пiлота                                                      | /api/Pilots
 PUT   | /api/Pilots/{id}     | Оновити пiлота                                                     | /api/Pilots/2
 DELETE| /api/Pilots/{id}     | Видалити пiлота                                                    | /api/Pilots/2
-GET   | /api/PlaneTypes | Список всіх стюардес                                                        | /api/PlaneTypes
+GET   | /api/PlaneTypes       | Список всіх                                                         | /api/PlaneTypes
 GET   | /api/PlaneTypes/{id}     | Однин по id                                                        | /api/PlaneTypes/2
 POST  | /api/PlaneTypes          | Додати тип лiтака                                                      | /api/PlaneTypes
 PUT   | /api/PlaneTypes/{id}     | Оновити тип лiтака                                                     | /api/PlaneTypes/2
 DELETE| /api/PlaneTypes/{id}     | Видалити тип лiтака                                                    | /api/PlaneTypes/2
-GET   | /api/Planes | Список всіх стюардес                                                        | /api/Planes
+GET   | /api/Planes | Список всіх                                                         | /api/Planes
 GET   | /api/Planes/{id}     | Однин по id                                                        | /api/Planes/2
-POST  | /api/Planes          | Додати лiтак                                                      | /api/PlPlanesaneTypes
+POST  | /api/Planes          | Додати лiтак                                                      | /api/Planes
 PUT   | /api/Planes/{id}     | Оновити лiтак                                                     | /api/Planes/2
 DELETE| /api/Planes/{id}     | Видалити лiтак                                                    | /api/Planes/2
+GET   | /api/Crews | Список всіх                                                         | /api/Crews
+GET   | /api/Crews/{id}     | Однинa по id                                                        | /api/Crews/2
+POST  | /api/Crews          | Додати команду                                                      | /api/Crews
+PUT   | /api/Crews/{id}     | Оновити команду                                                     | /api/Crews/2
+DELETE| /api/Crews/{id}     | Видалити команду                                                    | /api/Crews/2
+GET   | /api/Departures         | Список всіх                                                         | /api/Departures
+GET   | /api/Departures/{id}     | Однин по id                                                        | /api/Departures/2
+POST  | /api/Departures          | Додати вилiт                                                      | /api/Departures
+PUT   | /api/Departures/{id}     | Оновити вилiт                                                     | /api/Departures/2
+DELETE| /api/Departures/{id}     | Видалити вилiт                                                    | /api/Departures/2  
+GET   | /api/Flights          | Список всіх                                                         | /api/Flights
+GET   | /api/Flights/{id}     | Однин по id                                                        | /api/Flights/2
+POST  | /api/Flights          | Додати рейс                                                      | /api/Flights
+PUT   | /api/Flights/{id}     | Оновити рейс                                                     | /api/Flights/2
+DELETE| /api/Flights/{id}     | Видалити рейс                                                    | /api/Flights/2  
 
 ![REST](https://github.com/5avel/AirportRESRfulApi/blob/develop/123.jpg)
