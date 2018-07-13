@@ -6,6 +6,7 @@ using AirportRESRfulApi.Shared.DTO;
 using AutoMapper;
 using FluentValidation;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace AirportRESRfulApi.BLL.Services
@@ -13,17 +14,17 @@ namespace AirportRESRfulApi.BLL.Services
     public class TicketsService : ITicketsService
     {
         private IRepository<Ticket> _repository;
-        private IFlightsService _flightsService;
+        private IRepository<Flight> _flightsRepository;
         private IMapper _mapper;
         private IValidator<TicketDto> _ticketsValidator;
         public TicketsService(IRepository<Ticket> repository,
             IMapper mapper,
-            IFlightsService flightsService,
+            IRepository<Flight> flightsRepository,
             IValidator<TicketDto> ticketValidator)
         {
             _repository = repository;
             _mapper = mapper;
-            _flightsService = flightsService;
+            _flightsRepository = flightsRepository;
             _ticketsValidator = ticketValidator;
         }
 
@@ -47,7 +48,7 @@ namespace AirportRESRfulApi.BLL.Services
 
         public IEnumerable<TicketDto> GetNotSoldSByFlightIdAndDate(string flightNumber, DateTime flightDate)
         {
-            FlightDto flight = _flightsService.GetByFlightNumberAndDate(flightNumber, flightDate);
+            Flight flight = _flightsRepository.Find(x => x.FlightNumber == flightNumber & x.DepartureTime == flightDate).FirstOrDefault();
             var entity = _repository.Find(t => t.FlightId == flight.Id);
             return _mapper.Map<IEnumerable<Ticket>, IEnumerable<TicketDto>>(entity);
         }
@@ -91,6 +92,14 @@ namespace AirportRESRfulApi.BLL.Services
 
             var makedEntity = _mapper.Map<TicketDto, Ticket>(entity);
             return _mapper.Map<Ticket, TicketDto>(_repository.Create(makedEntity));
+        }
+
+        public IEnumerable<TicketDto> Make(IEnumerable<TicketDto> entitys)
+        {
+            
+
+            var makedEntitys = _mapper.Map<IEnumerable<TicketDto>, IEnumerable<Ticket>>(entitys);
+            return _mapper.Map<IEnumerable<Ticket>, IEnumerable<TicketDto>>(_repository.Create(makedEntitys));
         }
 
         public TicketDto Update(TicketDto entity)

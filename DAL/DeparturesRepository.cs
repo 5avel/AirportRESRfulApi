@@ -21,6 +21,12 @@ namespace AirportRESRfulApi.DAL
             return entity;
         }
 
+        public IEnumerable<Departure> Create(IEnumerable<Departure> entitys)
+        {
+            _airportContext.Departures.AddRange(entitys);
+            return entitys;
+        }
+
         public bool Delete(int id)
         {
             var itemToRemove = _airportContext.Departures.FirstOrDefault(t => t.Id == id);

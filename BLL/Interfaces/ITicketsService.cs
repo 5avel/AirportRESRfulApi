@@ -12,6 +12,7 @@ namespace AirportRESRfulApi.BLL.Interfaces
         TicketDto BayById(int id);
         TicketDto ReturnById(int id);
         TicketDto Make(TicketDto entity);
+        IEnumerable<TicketDto> Make(IEnumerable<TicketDto> entitys);
         TicketDto Update(TicketDto entity);
         bool Delete(int id);
     }

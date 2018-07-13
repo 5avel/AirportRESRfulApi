@@ -12,6 +12,7 @@ namespace AirportRESRfulApi.DAL.Interfaces
         TEntity GetById(int id);
         IEnumerable<TEntity> Find(Func<TEntity, Boolean> predicate);
         TEntity Create(TEntity entity);
+        IEnumerable<TEntity> Create( IEnumerable<TEntity> entitys);
         TEntity Update(TEntity entity);
         bool Delete(int id);
         bool Delete(TEntity entity);
