@@ -1,10 +1,12 @@
 ﻿using AirportRESRfulApi.BLL.Interfaces;
 using AirportRESRfulApi.BLL.Services;
+using AirportRESRfulApi.BLL.Validations;
 using AirportRESRfulApi.DAL;
 using AirportRESRfulApi.DAL.Interfaces;
 using AirportRESRfulApi.DAL.Models;
 using AirportRESRfulApi.Shared.DTO;
 using AutoMapper;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +29,10 @@ namespace AirportRESRfulApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Validators
+            services.AddScoped<IValidator<TicketDto>, TicketsValidator>();
+            services.AddScoped<IValidator<FlightDto>, FlightsValidator>();
+
             // DAL 
             services.AddScoped<IRepository<Ticket>, TicketsRepository>();
             services.AddScoped<IRepository<Flight>, FlightsRepository>();

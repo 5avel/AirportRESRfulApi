@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AirportRESRfulApi.Shared.DTO;
+﻿using AirportRESRfulApi.Shared.DTO;
 using FluentValidation;
 
 namespace AirportRESRfulApi.BLL.Validations
 {
-    public class TicketValidator : AbstractValidator<TicketDto>
+    public class TicketsValidator : AbstractValidator<TicketDto>
     {
-        public TicketValidator()
+        public TicketsValidator()
         {
             RuleFor(ticketDto => ticketDto.FlightNumber)
                 .NotNull()

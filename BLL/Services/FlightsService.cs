@@ -6,18 +6,22 @@ using AutoMapper;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using FluentValidation;
 
 namespace AirportRESRfulApi.BLL.Services
 {
     public class FlightsService : IFlightsService
     {
+
         private IRepository<Flight> _repository;
         private IMapper _mapper;
+        private IValidator<FlightDto> _validator;
 
-        public FlightsService(IRepository<Flight> repository, IMapper mapper)
+        public FlightsService(IRepository<Flight> repository, IMapper mapper, IValidator<FlightDto> validator)
         {
             _repository = repository;
             _mapper = mapper;
+            _validator = validator;
         }
 
         public bool Delete(int id)
@@ -45,7 +49,11 @@ namespace AirportRESRfulApi.BLL.Services
 
         public FlightDto Make(FlightDto entity)
         {
+
+            if (_validator.Validate(entity).IsValid != true) return null;
+
             var makedEntity = _mapper.Map<FlightDto, Flight>(entity);
+
             return _mapper.Map<Flight, FlightDto>(_repository.Create(makedEntity));
         }
 
