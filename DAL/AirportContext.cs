@@ -215,7 +215,7 @@ namespace AirportRESRfulApi.DAL
                         FlightId = flightId,
                         FlightNumber = flightNumber,
                         IsSold = false,
-                        PlaseNumber = 1,
+                        PlaseNumber = tickets.Count + 1,
                         Price = 200
                     });
             }
