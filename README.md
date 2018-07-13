@@ -48,5 +48,15 @@ GET   | /api/Pilots/{id}     | Однин по id                               
 POST  | /api/Pilots          | Додати пiлота                                                      | /api/Pilots
 PUT   | /api/Pilots/{id}     | Оновити пiлота                                                     | /api/Pilots/2
 DELETE| /api/Pilots/{id}     | Видалити пiлота                                                    | /api/Pilots/2
+GET   | /api/PlaneTypes | Список всіх стюардес                                                        | /api/PlaneTypes
+GET   | /api/PlaneTypes/{id}     | Однин по id                                                        | /api/PlaneTypes/2
+POST  | /api/PlaneTypes          | Додати тип лiтака                                                      | /api/PlaneTypes
+PUT   | /api/PlaneTypes/{id}     | Оновити тип лiтака                                                     | /api/PlaneTypes/2
+DELETE| /api/PlaneTypes/{id}     | Видалити тип лiтака                                                    | /api/PlaneTypes/2
+GET   | /api/Planes | Список всіх стюардес                                                        | /api/Planes
+GET   | /api/Planes/{id}     | Однин по id                                                        | /api/Planes/2
+POST  | /api/Planes          | Додати лiтак                                                      | /api/PlPlanesaneTypes
+PUT   | /api/Planes/{id}     | Оновити лiтак                                                     | /api/Planes/2
+DELETE| /api/Planes/{id}     | Видалити лiтак                                                    | /api/Planes/2
 
 ![REST](https://github.com/5avel/AirportRESRfulApi/blob/develop/123.jpg)
