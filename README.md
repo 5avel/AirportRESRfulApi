@@ -31,6 +31,22 @@ How to compile
 
 -Open Postman (https://www.getpostman.com/) or Fiddler (https://www.telerik.com/fiddler)
 ## Endpoints API
-
+Type |         Method        | Description                                                          | Sample
+------|-----------------------|---------------------------------------------------------------------|--------------------------
+GET   | /api/Tickets          | Список всіх бiлетiв                                                 |
+GET   | /api/Tickets/{id}     | Один бiлет по id                                                    | /api/Tickets/2
+GET   | /api/Tickets/{flightId}/{flightDate} | Вiльнi бiлети по рейсу на дату                       | /api/Tickets/QW11/2018-07-13T08:22:56.6404304+03:00
+GET   | /api/Tickets/Bay/{id}  | Покупка бiлета                                                     | /api/Tickets/Bay/2
+GET   | /api/Tickets/Return/{id}| Повернення бiлета                                                 | /api/Tickets/Return/2
+GET   | /api/Stewardesses | Список всіх стюардес                                                    | /api/Stewardesses
+GET   | /api/Stewardesses/{id}   | Одна по id                                                       | /api/Stewardesses/2
+POST  | /api/Stewardesses   | Додати стюардессу                                                     | /api/Stewardesses
+PUT   | /api/Stewardesses/{id}   | Оновити стюардессу                                               | /api/Stewardesses/2
+DELETE| /api/Stewardesses/{id}    | Видалити стюардессу                                             | /api/Stewardesses/2
+GET   | /api/Pilots | Список всіх стюардес                                                        | /api/Pilots
+GET   | /api/Pilots/{id}     | Однин по id                                                        | /api/Pilots/2
+POST  | /api/Pilots          | Додати пiлота                                                      | /api/Pilots
+PUT   | /api/Pilots/{id}     | Оновити пiлота                                                     | /api/Pilots/2
+DELETE| /api/Pilots/{id}     | Видалити пiлота                                                    | /api/Pilots/2
 
 ![REST](https://github.com/5avel/AirportRESRfulApi/blob/develop/123.jpg)
