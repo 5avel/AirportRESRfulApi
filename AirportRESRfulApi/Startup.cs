@@ -43,7 +43,7 @@ namespace AirportRESRfulApi
             //BLL
             services.AddScoped<ITicketsService, TicketsService>();
             services.AddScoped<IFlightsService, FlightsService>();
-            services.AddScoped<IDeparturesService, DeparturesSerice>();
+            services.AddScoped<IDeparturesService, DeparturesService>();
             services.AddScoped<ICrewsService, CrewsService>();
             services.AddScoped<IPilotsService, PilotsService>();
             services.AddScoped<IStewardessesService, StewardessesService>();

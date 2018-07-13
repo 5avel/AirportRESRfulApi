@@ -3,7 +3,9 @@ using AirportRESRfulApi.DAL.Interfaces;
 using AirportRESRfulApi.DAL.Models;
 using AirportRESRfulApi.Shared.DTO;
 using AutoMapper;
+using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace AirportRESRfulApi.BLL.Services
 {
@@ -27,6 +29,12 @@ namespace AirportRESRfulApi.BLL.Services
         {
             var entity = _repository.GetAll();
             return _mapper.Map<IEnumerable<Flight>, IEnumerable<FlightDto>>(entity);
+        }
+
+        public FlightDto GetByFlightNumberAndDate(string flightNumber, DateTime flightDate)
+        {
+            var entity = _repository.Find(f => f.FlightNumber == flightNumber & f.DepartureTime == flightDate).FirstOrDefault();
+            return _mapper.Map<Flight, FlightDto>(entity);
         }
 
         public FlightDto GetById(int id)

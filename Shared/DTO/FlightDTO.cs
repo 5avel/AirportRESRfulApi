@@ -3,7 +3,7 @@
     using System;
     public class FlightDto : BaseDto
     {
-        public string DepartureNumber { set; get; }
+        public string FlightNumber { set; get; }
         public string DeparturePoint { set; get; }
         public DateTime DepartureTime { set; get; }
         public string DestinationPoint { set; get; }

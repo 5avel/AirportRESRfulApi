@@ -1,6 +1,7 @@
 ﻿using AirportRESRfulApi.BLL.Interfaces;
 using AirportRESRfulApi.Shared.DTO;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,29 +35,41 @@ namespace AirportRESRfulApi.Controllers
             return _ticketSrvice.GetById(id);
         }
 
-        // POST api/Tickets
-        [HttpPost]
-        public ActionResult<TicketDto> Post([FromBody] TicketDto ticket)
+        // GET http://localhost:5000/api/Tickets/QW11/2018-07-13T08:22:56.6404304+03:00
+        [HttpGet("{flightId}/{flightDate}")]
+        public ActionResult<IEnumerable<TicketDto>> Get(string flightId, DateTime flightDate)
         {
-            return _ticketSrvice.Make(ticket);
+            if (String.IsNullOrWhiteSpace(flightId)) return NotFound("flightDate Is Null Or WhiteSpace!");
+            if (flightDate == null) return NotFound("flightDate is null!");
+
+            var tickets = _ticketSrvice.GetNotSoldSByFlightIdAndDate(flightId, flightDate);
+
+            if (tickets == null || tickets.Count() == 0) return NotFound();
+
+            return tickets.ToList();
         }
 
-        // PUT api/Tickets/2
-        [HttpPut("{id}")]
-        public TicketDto Put(int id, [FromBody] TicketDto ticket)
+        // GET http://localhost:5000/api/Tickets/Bay/2
+        [HttpGet("Bay/{id}")]
+        public ActionResult<TicketDto> BayById(int id)
         {
-            return _ticketSrvice.Update(ticket);
+            var result = _ticketSrvice.BayById(id);
+
+            if (result == null) return NotFound();
+
+            return result;
         }
 
-        // DELETE api/Tickets/2
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        //GET http://localhost:5000/api/Tickets/Return/2
+        [HttpGet("Return/{id}")]
+        public ActionResult<TicketDto> ReturnById(int id)
         {
-            if(_ticketSrvice.Delete(id))
-            {
-                return Ok();
-            }
-            return NotFound();
+            var result = _ticketSrvice.ReturnById(id);
+
+            if (result == null) return NotFound();
+
+            return result;
         }
+
     }
 }

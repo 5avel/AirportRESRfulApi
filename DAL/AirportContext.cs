@@ -174,7 +174,7 @@ namespace AirportRESRfulApi.DAL
                 new Flight
                 {
                     Id = 1,
-                    DepartureNumber = "QW11",
+                    FlightNumber = "QW11",
                     DeparturePoint = "London",
                     DepartureTime = DateTime.Now,
                     DestinationPoint = "Ukraine",
@@ -186,7 +186,7 @@ namespace AirportRESRfulApi.DAL
                 new Flight
                 {
                     Id = 2,
-                    DepartureNumber = "QW13",
+                    FlightNumber = "QW13",
                     DeparturePoint = "Ukraine",
                     DepartureTime = DateTime.Now,
                     DestinationPoint = "London",

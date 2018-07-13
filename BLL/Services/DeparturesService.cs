@@ -7,13 +7,13 @@ using System.Collections.Generic;
 
 namespace AirportRESRfulApi.BLL.Services
 {
-    public class DeparturesSerice : IDeparturesService
+    public class DeparturesService : IDeparturesService
     {
 
         private IRepository<Departure> _repository;
         private IMapper _mapper;
 
-        public DeparturesSerice(IRepository<Departure> repository, IMapper mapper)
+        public DeparturesService(IRepository<Departure> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
