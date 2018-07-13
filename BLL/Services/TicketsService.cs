@@ -49,6 +49,9 @@ namespace AirportRESRfulApi.BLL.Services
         public IEnumerable<TicketDto> GetNotSoldSByFlightIdAndDate(string flightNumber, DateTime flightDate)
         {
             Flight flight = _flightsRepository.Find(x => x.FlightNumber == flightNumber & x.DepartureTime == flightDate).FirstOrDefault();
+
+            if (flight == null) return null;
+
             var entity = _repository.Find(t => t.FlightId == flight.Id);
             return _mapper.Map<IEnumerable<Ticket>, IEnumerable<TicketDto>>(entity);
         }

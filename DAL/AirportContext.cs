@@ -176,9 +176,9 @@ namespace AirportRESRfulApi.DAL
                     Id = 1,
                     FlightNumber = "QW11",
                     DeparturePoint = "London",
-                    DepartureTime = DateTime.Now,
+                    DepartureTime = Convert.ToDateTime("2018-07-13T08:22:56.6404304+03:00"),
                     DestinationPoint = "Ukraine",
-                    ArrivalTime = DateTime.Now + TimeSpan.FromHours(5),
+                    ArrivalTime = Convert.ToDateTime("2018-07-13T08:22:56.6404304+03:00") + TimeSpan.FromHours(5),
                     Tickets = CreateTickets(80, 1, "QW11"),
                     Departure = Departures.FirstOrDefault(x => x.Id == 1)
 
